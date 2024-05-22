@@ -41,9 +41,9 @@ public class LoanController {
 
     @PostMapping("/books/{id}")
 
-    public ResponseEntity<Loan> createLoan(@PathVariable(name = "id")Long bookId, @RequestBody Loan loan){
+    public ResponseEntity<Loan> createLoan(@PathVariable(name = "id")Long book_id, @RequestBody Loan loan){
 
-        Book book= bookRepository.findById(bookId).orElseThrow(()->new ValidationException("The book with the id="+bookId+" was not found"));
+        Book book= bookRepository.findById(book_id).orElseThrow(()->new ValidationException("The book with the id="+book_id+" was not found"));
 
         existsLoanByCodeStudentAndBookAndDevolution(loan, book);
         validateLoan(loan);
